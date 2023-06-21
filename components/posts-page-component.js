@@ -48,7 +48,7 @@ export function renderPostsPageComponent({ appEl }) {
     element: document.querySelector(".header-container"),
   });
   for (let userEl of document.querySelectorAll(".post-header")) {
-    const postsHeaderHtml = posts.slice(0, 1).map((post) => {
+    const postsHeaderHtml = posts.slice(0, 2).map((post) => {
       if (userEl.dataset.userId === post.user.id) {
       return `<div class="post-header" data-user-id=${post.user.id}>
       <img src="${post.user.imageUrl}" class="img-size">
@@ -99,9 +99,6 @@ export function renderPostsPageComponent({ appEl }) {
         renderHeaderComponent({
           element: document.querySelector(".header-container"),
         });
-        function reload() {
-          window.location = window.location.href;
-        }
         const likeButtons = document.querySelectorAll('.like-button');
           likeButtons.forEach((like, like1) => {
             like.addEventListener('click', function (e) {
@@ -111,13 +108,9 @@ export function renderPostsPageComponent({ appEl }) {
               } else {
                 liker({ userPostId: like.dataset.postId });
               }
-              setTimeout(reload, 100);
             })
           });
     });
-  }
-  function reload() {
-    window.location = window.location.href;
   }
   const likeButtons = document.querySelectorAll('.like-button');
     likeButtons.forEach((like, like1) => {
@@ -127,8 +120,7 @@ export function renderPostsPageComponent({ appEl }) {
            disLike({ userPostId: like.dataset.postId });
         } else {
           liker({ userPostId: like.dataset.postId });
-        }
-        setTimeout(reload, 500);
+        }   
       })
     });
 }

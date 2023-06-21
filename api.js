@@ -72,6 +72,10 @@ export function uploadImage({ file }) {
   });
 }
 
+function reload() {
+  window.location = window.location.href;
+}
+
 export function liker({ userPostId }) {
   return fetch(postsHost + `/${userPostId}/like`, {
     method: "POST",
@@ -79,7 +83,12 @@ export function liker({ userPostId }) {
       Authorization: getToken(),
     },
   }).then((response) => {
-    return response.json();
+    if (response.status === 200) {
+      setTimeout(reload, 500);
+      return response.json();
+    } else {
+      throw new Error('Произошла неизвестная ошибка');
+    }
   });
 }
 
@@ -90,6 +99,11 @@ export function disLike({ userPostId }) {
       Authorization: getToken(),
     },
   }).then((response) => {
-    return response.json();
+    if (response.status === 200) {
+      setTimeout(reload, 500);
+      return response.json();
+    } else {
+      throw new Error('Произошла неизвестная ошибка');
+    }
   });
 }
