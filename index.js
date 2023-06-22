@@ -84,6 +84,14 @@ export const goToPage = (newPage, data) => {
   throw new Error("страницы не существует");
 };
 
+const renderPosts = () => {
+  return fetch('https://wedev-api.sky.pro/api/v1/art/instapro/', {
+    method: "GET",
+  }).then((response) => {
+    return response.json();
+  });
+}
+
 const renderApp = () => {
   const appEl = document.getElementById("app");
   if (page === LOADING_PAGE) {
@@ -120,6 +128,10 @@ const renderApp = () => {
         headers: {
           Authorization: getToken(),
         },
+        }).then((response) => {
+          if (response.status === 201) {
+            window.location = window.location.href;
+          } 
         })
         // TODO: реализовать добавление поста в API
         console.log("Добавляю пост...", { description, imageUrl });

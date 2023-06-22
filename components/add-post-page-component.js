@@ -43,7 +43,6 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
             return response.json();
           })
           .then((data) => {
-            console.log(data.fileUrl);
             const inputText = document.querySelector('.input-text');
             onAddPostClick({
               description: inputText.value,
