@@ -48,7 +48,7 @@ export function renderPostsPageComponent({ appEl }) {
     element: document.querySelector(".header-container"),
   });
   for (let userEl of document.querySelectorAll(".post-header")) {
-    const postsHeaderHtml = posts.slice(0, 2).map((post) => {
+    const postsHeaderHtml = posts.map((post) => {
       if (userEl.dataset.userId === post.user.id) {
       return `<div class="post-header" data-user-id=${post.user.id}>
       <img src="${post.user.imageUrl}" class="img-size">
