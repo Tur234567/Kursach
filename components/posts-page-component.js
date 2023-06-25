@@ -96,9 +96,18 @@ export function renderPostsPageComponent({ appEl }) {
           </ul>
         </div>`;
         appEl.innerHTML = appUserHtml;
+        const head = document.querySelectorAll('.post-header');
+        console.log(head.length);
         renderHeaderComponent({
           element: document.querySelector(".header-container"),
         });
+        if (head.length > 1) {
+          for(let head1 of head) {
+            head1.style.display = 'none';
+            head[0].style.display = 'block';
+            head[0].style.display = 'flex';
+          }
+        }
         const likeButtons = document.querySelectorAll('.like-button');
           likeButtons.forEach((like, like1) => {
             like.addEventListener('click', function (e) {
