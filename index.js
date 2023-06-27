@@ -84,7 +84,7 @@ export const goToPage = (newPage, data) => {
 };
 
 const renderPosts = () => {
-  return fetch('https://wedev-api.sky.pro/api/v1/art/instapro/', {
+  return fetch('https://wedev-api.sky.pro/api/v1/Artur/instapro/', {
     method: "GET",
   }).then((response) => {
     return response.json();
@@ -118,7 +118,7 @@ const renderApp = () => {
     return renderAddPostPageComponent({
       appEl,
       onAddPostClick({ description, imageUrl }) {
-        fetch(`https://wedev-api.sky.pro/api/v1/art/instapro`, {
+        fetch(`https://wedev-api.sky.pro/api/v1/Artur/instapro`, {
         method: "POST",
         body: JSON.stringify({
           description,
